@@ -1,0 +1,30 @@
+[project]
+name = "ufo-ext-memorable"
+version = "0.1.0"
+description = "Memorable procedure recall and GBrain resolutions for a UFO deploy"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12"
+dependencies = [
+    "ufo>=0.1.0",
+    "alembic>=1.18",
+    "httpx>=0.27",
+    "pydantic>=2.9",
+    "sqlalchemy>=2.0",
+]
+
+[project.entry-points."ufo.extension"]
+memorable = "ufo_ext_memorable:manifest"
+
+[project.entry-points."ufo.pack"]
+assistant-memorable = "ufo_pack_assistant_memorable:pack"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ufo_ext_memorable"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/ufo_pack_assistant_memorable.py" = "ufo_pack_assistant_memorable.py"
